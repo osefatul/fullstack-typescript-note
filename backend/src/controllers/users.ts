@@ -15,8 +15,6 @@ export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
     }
 };
 
-
-
 interface SignUpBody {
     username?: string,
     email?: string,
@@ -61,9 +59,6 @@ export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = asy
     }
 };
 
-
-
-
 interface LoginBody {
     username?: string,
     password?: string,
@@ -96,9 +91,6 @@ export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async
         next(error);
     }
 };
-
-
-
 
 export const logout: RequestHandler = (req, res, next) => {
     req.session.destroy(error => {
