@@ -1,0 +1,8 @@
+.pageContainer {
+    padding: 32px 0;
+}
+
+.pageBackground {
+    background: rgba(8, 24, 3, 0.773);
+    height: 100vh;
+}

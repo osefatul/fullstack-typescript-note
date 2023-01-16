@@ -15,6 +15,8 @@ export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
     }
 };
 
+
+
 interface SignUpBody {
     username?: string,
     email?: string,

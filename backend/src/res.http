@@ -1,0 +1,20 @@
+### Create a new User
+POST http://localhost:5000/api/users/signup
+Content-Type: application/json
+
+{"username": "John", 
+"email":"john@example.com",
+"password":"Password5%"
+}
+
+
+
+
+### Create a new Post
+POST http://localhost:5000/api/notes
+Content-Type: application/json
+
+{"title": "demoTitle", 
+"text":"This is our first Note",
+"userId":"63c511eccb85abdde8ffcfbe"
+}

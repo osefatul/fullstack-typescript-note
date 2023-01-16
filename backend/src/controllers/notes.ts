@@ -4,6 +4,12 @@ import mongoose from "mongoose";
 import NoteModel from "../models/note";
 import { assertIsDefined } from "../util/assertIsDefined";
 
+
+
+
+
+
+
 export const getNotes: RequestHandler = async (req, res, next) => {
     const authenticatedUserId = req.session.userId;
 
@@ -16,6 +22,9 @@ export const getNotes: RequestHandler = async (req, res, next) => {
         next(error);
     }
 };
+
+
+
 
 export const getNote: RequestHandler = async (req, res, next) => {
     const noteId = req.params.noteId;
@@ -44,12 +53,17 @@ export const getNote: RequestHandler = async (req, res, next) => {
     }
 };
 
+
+
+
 interface CreateNoteBody {
     title?: string,
     text?: string,
 }
 
-export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
+
+//unknown is the opposite of "any" type - it is restrictive
+export const createNote: RequestHandler <unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
     const title = req.body.title;
     const text = req.body.text;
     const authenticatedUserId = req.session.userId;
@@ -73,6 +87,10 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     }
 };
 
+
+
+
+
 interface UpdateNoteParams {
     noteId: string,
 }
@@ -81,6 +99,7 @@ interface UpdateNoteBody {
     title?: string,
     text?: string,
 }
+
 
 export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBody, unknown> = async (req, res, next) => {
     const noteId = req.params.noteId;
@@ -119,6 +138,7 @@ export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBod
         next(error);
     }
 };
+
 
 
 
