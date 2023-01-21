@@ -1,7 +1,7 @@
-import { RequestHandler } from "express";
+import { Request, Response, NextFunction} from "express";
 import createHttpError from "http-errors";
 
-export const requiresAuth: RequestHandler = (req, res, next) => {
+export const requiresAuth= (req:Request, res:Response, next:NextFunction) => {
     if (req.session.userId) {
         next();
     } else {

@@ -5,15 +5,12 @@ import { Note as NoteModel } from "../models/note";
 import { formatDate } from "../utils/formDate";
 import { MdDelete } from "react-icons/md";
 
-
 interface NoteProps {
     note: NoteModel,
     onNoteClicked: (note: NoteModel) => void,
     onDeleteNoteClicked: (note: NoteModel) => void,
     className?: string,
 }
-
-
 
 const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps) => {
     const {

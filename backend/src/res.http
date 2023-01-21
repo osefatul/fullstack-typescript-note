@@ -60,5 +60,5 @@ Content-Type: application/json
 
 
 ### delete a note
-DELETE http://localhost:5000/api/notes/63caefb2e301770d4cf183ff
+POST http://localhost:5000/api/users/logout
 Content-Type: application/json

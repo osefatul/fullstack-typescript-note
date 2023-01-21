@@ -7,10 +7,9 @@ import { assertIsDefined } from "../util/assertIsDefined";
 
 
 
-
 export const getNotes = async (req:Request, res:Response, next:NextFunction) => {
+    console.log("this is from notes", req.session)
     const authenticatedUserId = req.session.userId;
-
     try {
         assertIsDefined(authenticatedUserId);
 

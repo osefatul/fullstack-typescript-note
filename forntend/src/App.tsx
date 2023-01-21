@@ -6,28 +6,34 @@ import LoginModal from './components/LoginModal';
 import NavBar from './components/NavBar';
 import SignUpModal from './components/SignUpModal';
 import { User } from './models/user';
-import * as NotesApi from "./network/note_api";
+import * as NotesApi from "./network/notes_api";
 import NotesPage from './pages/NotesPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPage from './pages/PrivacyPage';
 import styles from "./styles/App.module.css";
 
-function App() {
 
-  const [loggedInUser, setLoggedInUser] = useState<User | null>(null)
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
+
+function App() {
+	const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
+	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const [showLoginModal, setShowLoginModal] = useState(false);
 
+	useEffect(() => {
+		async function fetchLoggedInUser() {
+			try {
+				const user = await NotesApi.getLoggedInUser();
+				setLoggedInUser(user);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		fetchLoggedInUser();
+	}, []);
 
-  useEffect(()=>{
-
-  },[])
-
-
-
-  return (
+	return (
 		<BrowserRouter>
-			<div className={styles.pageBackground}>
+			<div>
 				<NavBar
 					loggedInUser={loggedInUser}
 					onLoginClicked={() => setShowLoginModal(true)}
@@ -72,6 +78,5 @@ function App() {
 		</BrowserRouter>
 	);
 }
-
 
 export default App;

@@ -2,16 +2,11 @@ import { useEffect, useState } from 'react';
 import { Button, Col, Row, Spinner } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 import { Note as NoteModel } from '../models/note';
-import * as NotesApi from "../network/note_api";
+import * as NotesApi from "../network/notes_api";
 import styles from "../styles/NotesPage.module.css";
 import styleUtils from "../styles/utils.module.css";
 import AddEditNoteDialog from "./AddEditNoteDialog";
 import Note from './Note';
-
-
-
-
-
 
 const NotesPageLoggedInView = () => {
 
@@ -51,7 +46,7 @@ const NotesPageLoggedInView = () => {
 
     const notesGrid =
         <Row xs={1} md={2} xl={3} className={`g-4 ${styles.notesGrid}`}>
-            {notes.map(note => (
+            {notes?.map(note => (
                 <Col key={note._id}>
                     <Note
                         note={note}

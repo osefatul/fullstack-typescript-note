@@ -52,7 +52,6 @@ export const signUp = async (req: Request, res:Response, next:NextFunction)  => 
         });
 
         req.session.userId = newUser._id;
-
         res.status(201).json(newUser);
     } catch (error) {
         next(error);
@@ -81,7 +80,7 @@ export const login =  async (req: Request, res:Response, next:NextFunction) => {
             throw createHttpError(401, "Invalid credentials");
         }
 
-        req.session.userId = user._id;
+        req.session.userId = user._id; //set userId in the session.
         res.status(201).json(user);
     } catch (error) {
         next(error);

@@ -4,16 +4,12 @@ import NavBarLoggedInView from "./NavBarLoggedInView";
 import NavBarLoggedOutView from "./NavBarLoggedOutView";
 import { Link } from "react-router-dom";
 
-
-
 interface NavBarProps {
     loggedInUser: User | null,
     onSignUpClicked: () => void,
     onLoginClicked: () => void,
     onLogoutSuccessful: () => void,
 }
-
-
 
 const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccessful }: NavBarProps) => {
     return (
@@ -40,6 +36,5 @@ const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccess
         </Navbar>
     );
 }
-
 
 export default NavBar;
