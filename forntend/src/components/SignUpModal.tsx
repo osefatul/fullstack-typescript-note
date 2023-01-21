@@ -23,9 +23,11 @@ const SignUpModal = ({ onDismiss, onSignUpSuccessful }: SignUpModalProps) => {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignUpCredentials>();
 
     async function onSubmit(credentials: SignUpCredentials) {
+        console.log(credentials)
         try {
             const newUser = await NotesApi.signUp(credentials);
-            onSignUpSuccessful(newUser);
+            // onSignUpSuccessful(newUser);
+            console.log(newUser)
         } catch (error) {
             if (error instanceof ConflictError) {
                 setErrorText(error.message);

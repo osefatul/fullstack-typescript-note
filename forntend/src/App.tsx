@@ -25,9 +25,6 @@ function App() {
 
 
 
-
-
-
   return (
 		<BrowserRouter>
 			<div className={styles.pageBackground}>

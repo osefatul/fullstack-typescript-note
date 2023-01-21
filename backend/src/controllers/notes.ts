@@ -1,4 +1,4 @@
-import { RequestHandler } from "express";
+import { NextFunction, Request, Response } from "express";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
 import NoteModel from "../models/note";
@@ -8,9 +8,7 @@ import { assertIsDefined } from "../util/assertIsDefined";
 
 
 
-
-
-export const getNotes: RequestHandler = async (req, res, next) => {
+export const getNotes = async (req:Request, res:Response, next:NextFunction) => {
     const authenticatedUserId = req.session.userId;
 
     try {
@@ -26,7 +24,7 @@ export const getNotes: RequestHandler = async (req, res, next) => {
 
 
 
-export const getNote: RequestHandler = async (req, res, next) => {
+export const getNote = async (req:Request, res:Response, next:NextFunction) => {
     const noteId = req.params.noteId;
     const authenticatedUserId = req.session.userId;
 
@@ -55,15 +53,8 @@ export const getNote: RequestHandler = async (req, res, next) => {
 
 
 
-
-interface CreateNoteBody {
-    title?: string,
-    text?: string,
-}
-
-
 //unknown is the opposite of "any" type - it is restrictive
-export const createNote: RequestHandler <unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
+export const createNote= async (req:Request, res:Response, next:NextFunction) => {
     const title = req.body.title;
     const text = req.body.text;
     const authenticatedUserId = req.session.userId;
@@ -90,18 +81,7 @@ export const createNote: RequestHandler <unknown, unknown, CreateNoteBody, unkno
 
 
 
-
-interface UpdateNoteParams {
-    noteId: string,
-}
-
-interface UpdateNoteBody {
-    title?: string,
-    text?: string,
-}
-
-
-export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBody, unknown> = async (req, res, next) => {
+export const updateNote= async (req:Request, res:Response, next:NextFunction) => {
     const noteId = req.params.noteId;
     const newTitle = req.body.title;
     const newText = req.body.text;
@@ -142,7 +122,7 @@ export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBod
 
 
 
-export const deleteNote: RequestHandler = async (req, res, next) => {
+export const deleteNote = async (req:Request, res:Response, next:NextFunction) => {
     const noteId = req.params.noteId;
     const authenticatedUserId = req.session.userId;
 

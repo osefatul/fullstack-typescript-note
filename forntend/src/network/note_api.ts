@@ -3,8 +3,11 @@ import { Note } from "../models/note";
 import { User } from "../models/user";
 
 
-async function fetchData(input: RequestInfo, init?: RequestInit) {
-    const response = await fetch(input, init);
+
+
+async function fetchData(input: string, init: RequestInit | undefined) {
+    const response = await fetch("http://localhost:5000"+input, init);
+
     if (response.ok) {
         return response;
     } else {
@@ -22,11 +25,11 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 
 
 
+
 export async function getLoggedInUser(): Promise<User> {
     const response = await fetchData("/api/users", { method: "GET" });
     return response.json();
 }
-
 
 
 
@@ -37,8 +40,9 @@ export interface SignUpCredentials {
 }
 
 export async function signUp(credentials: SignUpCredentials): Promise<User> {
-    const response = await fetchData("/api/users/signup",
+    const response = await fetchData ("/api/users/signup",
         {
+            mode:'cors',
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -47,8 +51,6 @@ export async function signUp(credentials: SignUpCredentials): Promise<User> {
         });
     return response.json();
 }
-
-
 
 
 
@@ -72,11 +74,11 @@ export async function login(credentials: LoginCredentials): Promise<User> {
 
 
 
+
+
 export async function logout() {
     await fetchData("/api/users/logout", { method: "POST" });
 }
-
-
 
 
 
@@ -107,7 +109,7 @@ export async function createNote(note: NoteInput): Promise<Note> {
 
 
 
-export async function updateNote(noteId: string, note: NoteInput): Promise<Note> {
+export async function updateNote(noteId: string, note: NoteInput):Promise<Note> {
     const response = await fetchData("/api/notes/" + noteId,
         {
             method: "PATCH",
@@ -118,6 +120,8 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
         });
     return response.json();
 }
+
+
 
 export async function deleteNote(noteId: string) {
     await fetchData("/api/notes/" + noteId, { method: "DELETE" });
