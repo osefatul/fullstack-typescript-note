@@ -5,7 +5,7 @@ import { Note as NoteModel } from '../models/note';
 import * as NotesApi from "../network/notes_api";
 import styles from "../styles/NotesPage.module.css";
 import styleUtils from "../styles/utils.module.css";
-import AddEditNoteDialog from "./AddEditNoteDialog";
+import AddAndEditNoteDialog from "./AddAndEditNoteDialog";
 import Note from './Note';
 
 const NotesPageLoggedInView = () => {
@@ -61,7 +61,8 @@ const NotesPageLoggedInView = () => {
             {!notesLoading && !showNotesLoadingError &&
                 <>
                     {notes.length > 0
-                        ? 
+                        ?
+                        // 
                         <Row xs={1} md={2} xl={3} className={`g-4 ${styles.notesGrid}`}>
                         {notes?.map(note => (
                             <Col key={note._id}>
@@ -79,7 +80,7 @@ const NotesPageLoggedInView = () => {
                 </>
             }
             {showAddNoteDialog &&
-                <AddEditNoteDialog
+                <AddAndEditNoteDialog
                     onDismiss={() => setShowAddNoteDialog(false)}
                     onNoteSaved={(newNote) => {
                         setNotes([...notes, newNote]);
@@ -88,7 +89,7 @@ const NotesPageLoggedInView = () => {
                 />
             }
             {noteToEdit &&
-                <AddEditNoteDialog
+                <AddAndEditNoteDialog
                     noteToEdit={noteToEdit}
                     onDismiss={() => setNoteToEdit(null)}
                     onNoteSaved={(updatedNote) => {

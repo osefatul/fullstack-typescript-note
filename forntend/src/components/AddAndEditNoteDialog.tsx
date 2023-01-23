@@ -11,7 +11,7 @@ interface AddEditNoteDialogProps {
     onNoteSaved: (note: Note) => void,
 }
 
-const AddEditNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialogProps) => {
+const AddAndEditNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialogProps) => {
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<NoteInput>({
         defaultValues: {
@@ -79,4 +79,4 @@ const AddEditNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDi
     );
 }
 
-export default AddEditNoteDialog;
+export default AddAndEditNoteDialog;
