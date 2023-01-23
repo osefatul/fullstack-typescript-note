@@ -6,7 +6,7 @@ import { User } from "../models/user";
 
 
 async function fetchData(input: string, init: RequestInit | undefined) {
-    const response = await fetch("http://localhost:5000"+input, init);
+    const response = await fetch("https://fullstack-ts-note.herokuapp.com"+input, init);
 
     if (response.ok) {
         return response;

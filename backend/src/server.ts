@@ -18,12 +18,13 @@ const app = express();
 mongoose.set('strictQuery', true);
 console.log("Connected to MongoDB")
 mongoose.connect(env.MONGO_URL).then(
-).catch(err => console.error(err));
+).catch((err: any) => console.error(err));
 
 
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    // origin: 'http://localhost:3000',
+    origin: 'https://fullstack-ts-note.netlify.app',
     credentials: true //to accept cookies from clients
 }))
 
@@ -41,8 +42,6 @@ app.use(session({
         mongoUrl: env.MONGO_URL
     }),
 }));
-
-
 
 
 app.use("/api/users", userRoutes);

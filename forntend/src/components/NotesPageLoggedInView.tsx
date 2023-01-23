@@ -92,6 +92,7 @@ const NotesPageLoggedInView = () => {
                 <AddAndEditNoteDialog
                     noteToEdit={noteToEdit}
                     onDismiss={() => setNoteToEdit(null)}
+                    //override the updated note.
                     onNoteSaved={(updatedNote) => {
                         setNotes(notes.map(existingNote => existingNote._id === updatedNote._id ? updatedNote : existingNote));
                         setNoteToEdit(null);

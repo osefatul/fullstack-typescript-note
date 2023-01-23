@@ -2,11 +2,17 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.ts",
+    "devStart": "nodemon src/server.ts",
     "lint": "eslint . --ext .ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+
+    "compile": "tsc --project ./tsconfig.json",
+    "afterCompile": "nodemon build/server.js",
+
+
+    "start": "node build/server.js",
+    "postinstall": "tsc"
   },
   "keywords": [],
   "author": "",

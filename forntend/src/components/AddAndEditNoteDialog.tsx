@@ -5,11 +5,15 @@ import { NoteInput } from "../network/notes_api";
 import * as NotesApi from "../network/notes_api";
 import TextInputField from "./form/TextInputField";
 
+
+
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
     onDismiss: () => void,
     onNoteSaved: (note: Note) => void,
 }
+
+
 
 const AddAndEditNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialogProps) => {
 
