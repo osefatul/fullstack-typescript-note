@@ -44,19 +44,9 @@ const NotesPageLoggedInView = () => {
         }
     }
 
-    const notesGrid =
-        <Row xs={1} md={2} xl={3} className={`g-4 ${styles.notesGrid}`}>
-            {notes?.map(note => (
-                <Col key={note._id}>
-                    <Note
-                        note={note}
-                        className={styles.note}
-                        onNoteClicked={setNoteToEdit}
-                        onDeleteNoteClicked={deleteNote}
-                    />
-                </Col>
-            ))}
-        </Row>
+
+
+
 
     return (
         <>
@@ -71,7 +61,19 @@ const NotesPageLoggedInView = () => {
             {!notesLoading && !showNotesLoadingError &&
                 <>
                     {notes.length > 0
-                        ? notesGrid
+                        ? 
+                        <Row xs={1} md={2} xl={3} className={`g-4 ${styles.notesGrid}`}>
+                        {notes?.map(note => (
+                            <Col key={note._id}>
+                                <Note
+                                    note={note}
+                                    className={styles.note}
+                                    onNoteClicked={setNoteToEdit}
+                                    onDeleteNoteClicked={deleteNote}
+                                />
+                            </Col>
+                        ))}
+                        </Row>
                         : <p>You don't have any notes yet</p>
                     }
                 </>

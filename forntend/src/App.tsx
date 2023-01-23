@@ -31,6 +31,8 @@ function App() {
 		fetchLoggedInUser();
 	}, []);
 
+
+
 	return (
 		<BrowserRouter>
 			<div>

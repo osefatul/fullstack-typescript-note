@@ -51,11 +51,11 @@ const SignUpModal = ({ onDismiss, onSignUpSuccessful }: SignUpModalProps) => {
                     <TextInputField
                         name="username"
                         label="Username"
-                        type="text"
-                        placeholder="Username"
                         register={register}
                         registerOptions={{ required: "Required" }}
                         error={errors.username}
+                        type="text"
+                        placeholder="Username"
                     />
                     <TextInputField
                         name="email"
